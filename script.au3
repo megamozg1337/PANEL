@@ -1,9 +1,8 @@
 _Main()
 
 Func _Main()
-
     $accounts = FileOpen(@ScriptDir & '\accounts.txt')
-
+	
 	If $accounts = -1 Then
 		TrayTip("", "Невозможно открыть файл accounts.txt, завершаю работу скрипта", 3, 1)
 		Exit
@@ -19,20 +18,20 @@ Func _Main()
 
 		$aAccs = StringSplit($line, ';')
 
-        	$username = $aAccs[1]
-        	$pass = $aAccs[2]
+        $username = $aAccs[1]
+        $pass = $aAccs[2]
 
 		TrayTip("", "Запускаю: " & $username, 3, 1)
 
 		$steamPID = Run($steamExe & " -login " & $username & " " & $pass & _
-					    " -applaunch 730" & _
-					    " -low" & _
-					    " -nosound" & _
-					    " -novid" & _
-                                	    " -nohltv" & _
-					    " -nofriendsui" & _
-					    " -window -w 640 -h 480" & _
-					    " +exec idle.cfg")
+									" -applaunch 730" & _
+									" -low" & _
+									" -nosound" & _
+									" -novid" & _
+									" -nohltv" & _
+									" -nofriendsui" & _
+									" -window -w 640 -h 480" & _
+									" +exec idle.cfg")
         If Not $steamPID Then
             TrayTip("", "Не удалось запустить steam.exe, завершаю работу скрипта", 3, 1)
             Exit
@@ -45,7 +44,7 @@ Func _Main()
             Exit
         EndIf
 		
-	Sleep(10 * 1000)
+		Sleep(10 * 1000)
 			
 	WEnd
 
